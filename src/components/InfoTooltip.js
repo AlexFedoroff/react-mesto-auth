@@ -1,6 +1,6 @@
 import loaderImgFailure from '../images/AuthImgFailure.png';
 import loaderImgSuccess from '../images/AuthImgSuccess.png';
-import { useEffect } from "react";
+//import { useEffect } from "react";
 
 
 function InfoTooltip(props) {                  
@@ -8,7 +8,7 @@ function InfoTooltip(props) {
   let loaderImg;
   
   if (props.isRegSuccess) {
-    infoText = "Вы успешно заргистрировались!";
+    infoText = "Вы успешно зарегистрировались!";
     loaderImg = loaderImgSuccess;
   } 
   else
@@ -16,32 +16,33 @@ function InfoTooltip(props) {
     infoText = "Что-то пошло не так! Попробуйте еще раз.";
     loaderImg = loaderImgFailure;
   }
-
+/*
   useEffect(() => {
     if (props.isOpen) {
       document.addEventListener("keydown", handleEscClose);
     }
     return () => document.removeEventListener("keydown", handleEscClose);
   }, [props.isOpen]);
-
-  function handleEscClose(evt) {
-    if (evt.key === "Escape") {
+  */
+  function handleOverlayClick(evt) {
+    if (evt.target === evt.currentTarget) {
       props.onClose();
     }
   }
 /*
-  function handleCloseByOverlayClick(evt) {
-    if (evt.target === evt.currentTarget) {
-      onClose();
+  function handleEscClose(evt) {
+    if (evt.key === "Escape") {
+      props.onClose();
     }
-  }
-*/
-  return (                
-    <div className={`popup ${props.isOpen && " popup_opened"}`}>
+  }*/
+
+  return (
+    <div className={`popup ${props.isOpen && " popup_opened"}`}
+      onClick={handleOverlayClick}>
       <div className="popup__container">        
         <img className="popup__auth-res-img" src={loaderImg} alt="Изображение статуса успешности авторизации"/>
         <h2 className="popup__infotext">{infoText}</h2>
-        <button className="popup__close-icon"  type="button" onClick={props.onClose}></button>        
+        <button className="popup__close-icon"  type="button" onClick={props.onClose}></button>
        </div>
     </div>
  )

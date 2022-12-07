@@ -265,7 +265,7 @@ function handleLogout() {
         <InfoTooltip 
           isOpen={isInfotooltipOpen}
           isRegSuccess={isRegSuccess}
-          onClose={closeAllPopups}
+          onClose={closeAllPopups}          
         />
         
       <ImagePopup card={selectedCard} isOpen={isImagePopupOpen} onClose={closeAllPopups}/>

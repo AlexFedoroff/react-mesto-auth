@@ -1,6 +1,6 @@
 import AuthPopup from "./AuthPopup.js";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+//import { Link } from "react-router-dom";
 
 export default function Register(props) {
   const [values, setValues] = useState({ email: "", password: "" });
@@ -31,7 +31,7 @@ export default function Register(props) {
           placeholder="Email"
           minLength="5"
           maxLength="64"
-          value={values.email || ""}
+          value={values.email}
           name="email"
           onChange={handleChange}
           required
@@ -43,7 +43,7 @@ export default function Register(props) {
           placeholder="Пароль"
           minLength="8"
           maxLength="32"
-          value={values.password || ""}
+          value={values.password}
           name="password"
           onChange={handleChange}
           required

@@ -1,14 +1,13 @@
 import { Link } from "react-router-dom";
 
-function authPopup( props ) {
+function authPopup(props) {    
   
-  let isRegister = false;
   let redirectClassName = "popup__auth-redirect";
 
-  if (props.name === "register") {
-    isRegister = true;
+  if (props.name === "register") {    
     redirectClassName = redirectClassName + " popup__auth-redirect_visible"
-  }  
+  }   
+
   return (
     <div className="popup popup_auth popup_opened">
       <div className="popup__container popup__container_auth">

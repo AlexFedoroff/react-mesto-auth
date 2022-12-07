@@ -25,7 +25,7 @@ export default function Login(props) {
         type="email"
         className="popup__field popup__field_auth"
         id="email-input"        
-        value={values.email || ""}
+        value={values.email}
         name="email"
         placeholder="email"
         minLength="5"
@@ -40,7 +40,7 @@ export default function Login(props) {
         placeholder="Пароль"
         minLength="8"
         maxLength="32"
-        value={values.password || ""}
+        value={values.password}
         name="password"
         onChange={handleChange}
         required
