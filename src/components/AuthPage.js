@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function authPopup(props) {    
+function authPage(props) {    
   
   let redirectClassName = "popup__auth-redirect";
 
@@ -32,4 +32,4 @@ function authPopup(props) {
   );
 }
 
-export default authPopup;
+export default authPage;

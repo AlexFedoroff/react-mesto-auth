@@ -1,4 +1,4 @@
-import AuthPopup from "./AuthPopup.js";
+import AuthPage from "./AuthPage.js";
 import { useState } from "react";
 //import { Link } from "react-router-dom";
 
@@ -17,7 +17,7 @@ export default function Register(props) {
 
   return (
     <>
-      <AuthPopup
+      <AuthPage
         name="register"
         title="Регистрация"
         btnText="Зарегистрироваться"
@@ -49,7 +49,7 @@ export default function Register(props) {
           required
         />
         
-      </AuthPopup>      
+      </AuthPage>      
     </>
   )
 };

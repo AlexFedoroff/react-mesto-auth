@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AuthPopup from "./AuthPopup.js";
+import AuthPage from "./AuthPage.js";
 
 export default function Login(props) {
   const [values, setValues] = useState({ email: "", password: "" });
@@ -14,7 +14,7 @@ export default function Login(props) {
     props.onLogin(values);
   }
   return (
-    <AuthPopup
+    <AuthPage
       name="login"
       title="Вход"
       btnText="Войти"
@@ -45,6 +45,6 @@ export default function Login(props) {
         onChange={handleChange}
         required
       />      
-    </AuthPopup>
+    </AuthPage>
   );
 }

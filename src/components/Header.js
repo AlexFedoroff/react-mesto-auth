@@ -1,12 +1,8 @@
 import Logo from '../images/logo.svg';
 import React from "react";
-//import { Switch, Route, NavLink } from "react-router-dom";
 import { Route, NavLink, Switch } from 'react-router-dom';
 
-function Header(props) {
-  //const email = "asfedoroff@gmail.com"; //=props.email;
-  const email = props.email;
-  
+function Header({email,...props}) { 
   function handleLogout() {
     props.onLogout();
   }

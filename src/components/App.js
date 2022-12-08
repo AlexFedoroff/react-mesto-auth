@@ -17,6 +17,7 @@ import {Route, useHistory, Switch } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Login";
 import Register from './Register';
+import {infoTooltipSettings} from '../utils/data.js';
 
 function App() {
 
@@ -44,7 +45,7 @@ function App() {
       Auth
         .getUserInfo(jwt)
         .then((res) => {          
-          setLoggedIn(true);
+          setLoggedIn(true);          
           setEmail(res.data.email);
           history.push("/");
         })
@@ -156,25 +157,26 @@ function App() {
     setInfoTooltipOpen(false);
   }
 
-  useEffect(() => {      
+  useEffect(() => {
+    if (isLoggedIn) {
     Promise.all([
         Api.getUserInfo(),
         Api.getCards()
       ])    
       .then((data) => {
-        const [userData, cards] = data;        
-        setCurrentUser(userData);        
-        setCards(cards);        
+        const [userData, cards] = data;
+        setCurrentUser(userData);
+        setCards(cards);
      })
      .catch((err) => {
       console.log(err);
     })
     .finally(() => {
       setLoader({isOpen:false, errMsg:''});
-    })  
-}, [])
+    })}
+}, [isLoggedIn])
 
-function handleRegistration(data) {  
+function handleRegistration(data) {
   Auth
     .signUp(data)
     .then((res) => {
@@ -191,13 +193,12 @@ function handleRegistration(data) {
 function handleLogin(data) {  
   Auth
     .signIn(data)
-    .then((res) => {       
+    .then((res) => {
       localStorage.setItem("jwt",res.token);
       setLoggedIn(true);
       setEmail(data.email);
       history.push("/");
       setRegSuccess(true);
-      setInfoTooltipOpen(true);
     })
     .catch((err) => {
       //setLoader({isOpen:true, errMsg:err});
@@ -224,8 +225,9 @@ function handleLogout() {
           <Route path="/sign-up">
             <Register onRegister={handleRegistration} />
           </Route>
-          <ProtectedRoute          
-            component={Main}        
+          <ProtectedRoute
+            component={Main}
+            path="/"
             onEditProfileClick={handleEditProfileClick}
             onAddPlaceClick={handleAddPlaceClick}
             onEditAvatarClick={handleEditAvatarClick}
@@ -264,7 +266,8 @@ function handleLogout() {
         />
         <InfoTooltip 
           isOpen={isInfotooltipOpen}
-          isRegSuccess={isRegSuccess}
+          infoImg={isRegSuccess ? infoTooltipSettings.regSuccessImg : infoTooltipSettings.regFailureImg}
+          infoMsg={isRegSuccess ? infoTooltipSettings.regSuccessMsg : infoTooltipSettings.regFailureMsg}          
           onClose={closeAllPopups}          
         />
         

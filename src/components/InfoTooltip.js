@@ -1,22 +1,7 @@
-import loaderImgFailure from '../images/AuthImgFailure.png';
-import loaderImgSuccess from '../images/AuthImgSuccess.png';
 //import { useEffect } from "react";
-
-
 function InfoTooltip(props) {                  
-  let infoText;
-  let loaderImg;
   
-  if (props.isRegSuccess) {
-    infoText = "Вы успешно зарегистрировались!";
-    loaderImg = loaderImgSuccess;
-  } 
-  else
-  {
-    infoText = "Что-то пошло не так! Попробуйте еще раз.";
-    loaderImg = loaderImgFailure;
-  }
-/*
+/* todo debug
   useEffect(() => {
     if (props.isOpen) {
       document.addEventListener("keydown", handleEscClose);
@@ -40,8 +25,8 @@ function InfoTooltip(props) {
     <div className={`popup ${props.isOpen && " popup_opened"}`}
       onClick={handleOverlayClick}>
       <div className="popup__container">        
-        <img className="popup__auth-res-img" src={loaderImg} alt="Изображение статуса успешности авторизации"/>
-        <h2 className="popup__infotext">{infoText}</h2>
+        <img className="popup__auth-res-img" src={props.infoImg} alt="Изображение статуса успешности авторизации"/>
+        <h2 className="popup__infotext">{props.infoMsg}</h2>
         <button className="popup__close-icon"  type="button" onClick={props.onClose}></button>
        </div>
     </div>
